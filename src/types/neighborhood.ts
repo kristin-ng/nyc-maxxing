@@ -31,5 +31,7 @@ export interface StatusCounts {
   lived: number;
   visited: number;
   wantToGo: number;
-  total: number;
+  total: number; // all marked neighborhoods, including want-to-go
+  visitedCount: number; // lived + visited — want-to-go doesn't count as progress
+  neighborhoodCount: number; // total neighborhoods in this scope (percentage denominator)
 }

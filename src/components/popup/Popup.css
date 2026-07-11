@@ -12,10 +12,8 @@
   background: #1c1c22;
   color: #f2f2f5;
   border-radius: 12px;
-  min-width: 320px;
-  max-width: 420px;
-  width: 90%;
-  max-height: 80vh;
+  width: min(420px, 92vw);
+  max-height: 85dvh;
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
@@ -39,13 +37,18 @@
 }
 
 .popup-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: #a3a3ad;
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
-  padding: 0 4px;
+  min-width: 40px;
+  min-height: 40px;
+  margin: -8px -8px 0 0;
 }
 
 .popup-close:hover {

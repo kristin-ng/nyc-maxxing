@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { BoroughName, StatusCounts } from '../../types/neighborhood';
+import { percentageVisited } from '../../utils/boroughStats';
 import './BoroughBreakdown.css';
 
 interface BoroughBreakdownProps {
@@ -26,10 +27,24 @@ export function BoroughBreakdown({ byBorough, boroughs }: BoroughBreakdownProps)
         <ul className="borough-list">
           {boroughs.map((borough) => {
             const counts = byBorough[borough];
+            const percentage = percentageVisited(counts);
             return (
               <li key={borough} className="borough-row">
-                <span className="borough-name">{borough}</span>
-                <span className="borough-count">{counts.total}</span>
+                <div className="borough-row-header">
+                  <span className="borough-name">{borough}</span>
+                  <span className="borough-count">
+                    {counts.visitedCount}/{counts.neighborhoodCount} &middot; {percentage}%
+                  </span>
+                </div>
+                <div
+                  className="progress-bar progress-bar--small"
+                  role="progressbar"
+                  aria-valuenow={percentage}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                >
+                  <div className="progress-bar-fill" style={{ width: `${percentage}%` }} />
+                </div>
               </li>
             );
           })}
