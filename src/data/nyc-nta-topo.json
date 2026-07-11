@@ -1,0 +1,23 @@
+{
+  "type": "Topology",
+  "_placeholder": "Hand-built stand-in for the real NYC NTA TopoJSON (see scripts/generate-neighborhoods.mjs and README) — replace via mapshaper once data.cityofnewyork.us is reachable.",
+  "objects": {
+    "ntas": {
+      "type": "GeometryCollection",
+      "geometries": [
+        { "type": "Polygon", "arcs": [[0]], "properties": { "NTA2020": "MN40", "NTAName": "Upper East Side", "BoroName": "Manhattan" } },
+        { "type": "Polygon", "arcs": [[1]], "properties": { "NTA2020": "BK73", "NTAName": "Williamsburg", "BoroName": "Brooklyn" } },
+        { "type": "Polygon", "arcs": [[2]], "properties": { "NTA2020": "QN70", "NTAName": "Astoria", "BoroName": "Queens" } },
+        { "type": "Polygon", "arcs": [[3]], "properties": { "NTA2020": "BX01", "NTAName": "Mott Haven", "BoroName": "Bronx" } },
+        { "type": "Polygon", "arcs": [[4]], "properties": { "NTA2020": "SI01", "NTAName": "St. George", "BoroName": "Staten Island" } }
+      ]
+    }
+  },
+  "arcs": [
+    [[-73.967, 40.760], [-73.967, 40.780], [-73.937, 40.780], [-73.937, 40.760], [-73.967, 40.760]],
+    [[-73.967, 40.704], [-73.967, 40.724], [-73.947, 40.724], [-73.947, 40.704], [-73.967, 40.704]],
+    [[-73.933, 40.760], [-73.933, 40.780], [-73.903, 40.780], [-73.903, 40.760], [-73.933, 40.760]],
+    [[-73.933, 40.800], [-73.933, 40.820], [-73.903, 40.820], [-73.903, 40.800], [-73.933, 40.800]],
+    [[-74.100, 40.630], [-74.100, 40.650], [-74.080, 40.650], [-74.080, 40.630], [-74.100, 40.630]]
+  ]
+}

@@ -1,0 +1,10 @@
+.nyc-map {
+  flex: 1;
+  height: 100%;
+  background: #101014;
+  position: relative;
+}
+
+.nyc-map svg {
+  display: block;
+}

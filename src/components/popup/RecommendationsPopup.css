@@ -1,0 +1,38 @@
+.cultural-callout {
+  background: #2a2a35;
+  border-left: 3px solid #d99a3d;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.recommendation-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recommendation-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recommendation-title {
+  font-weight: 600;
+}
+
+.recommendation-description {
+  font-size: 0.85rem;
+  color: #a3a3ad;
+}
+
+.recommendation-empty {
+  color: #a3a3ad;
+  font-size: 0.9rem;
+  margin: 0;
+}

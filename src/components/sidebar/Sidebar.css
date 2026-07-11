@@ -1,0 +1,79 @@
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #1c1c22;
+  color: #f2f2f5;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  margin: 0 0 20px;
+}
+
+.overall-stat {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.overall-stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.overall-stat-label {
+  font-size: 0.8rem;
+  color: #a3a3ad;
+  margin-top: 4px;
+}
+
+.status-breakdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.status-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.status-breakdown-row--lived span:first-child::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2f6f4f;
+  margin-right: 6px;
+}
+
+.status-breakdown-row--visited span:first-child::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3d7dca;
+  margin-right: 6px;
+}
+
+.status-breakdown-row--want-to-go span:first-child::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d99a3d;
+  margin-right: 6px;
+}
