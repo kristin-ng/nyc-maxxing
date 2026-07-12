@@ -10,7 +10,7 @@ import type { FeatureCollection } from 'geojson';
 import ntaTopology from '../../data/nyc-nta-topo.json';
 import { neighborhoods, NTA_ID_PROPERTY } from '../../data/neighborhoods';
 import { useNeighborhoodStore } from '../../store/useNeighborhoodStore';
-import { STATUS_COLORS, UNSET_COLOR, HOVER_STROKE } from '../../utils/colors';
+import { STATUS_COLORS, UNSET_COLOR, NON_RESIDENTIAL_COLOR, HOVER_STROKE } from '../../utils/colors';
 import { isNonResidentialNta } from '../../utils/nta';
 import { MapTooltip } from './MapTooltip';
 import './NycMap.css';
@@ -54,7 +54,12 @@ export function NycMap({ onSelectNeighborhood }: NycMapProps) {
                 const id = geo.properties?.[NTA_ID_PROPERTY];
                 const neighborhood = id ? neighborhoods[id] : undefined;
                 const status = id ? statuses[id] : undefined;
-                const fill = status ? STATUS_COLORS[status] : UNSET_COLOR;
+                const isNonResidential = id ? isNonResidentialNta(id) : false;
+                const fill = isNonResidential
+                  ? NON_RESIDENTIAL_COLOR
+                  : status
+                    ? STATUS_COLORS[status]
+                    : UNSET_COLOR;
 
                 return (
                   <Geography
@@ -64,8 +69,10 @@ export function NycMap({ onSelectNeighborhood }: NycMapProps) {
                     stroke="#0d0d10"
                     strokeWidth={0.5}
                     style={{
-                      default: { outline: 'none' },
-                      hover: { outline: 'none', stroke: HOVER_STROKE, strokeWidth: 1.2 },
+                      default: { outline: 'none', cursor: isNonResidential ? 'default' : 'pointer' },
+                      hover: isNonResidential
+                        ? { outline: 'none', cursor: 'default' }
+                        : { outline: 'none', stroke: HOVER_STROKE, strokeWidth: 1.2, cursor: 'pointer' },
                       pressed: { outline: 'none' },
                     }}
                     onMouseEnter={(event) => {
@@ -84,7 +91,7 @@ export function NycMap({ onSelectNeighborhood }: NycMapProps) {
                     }}
                     onMouseLeave={() => setHovered(null)}
                     onClick={() => {
-                      if (neighborhood && !isNonResidentialNta(neighborhood.id)) {
+                      if (neighborhood && !isNonResidential) {
                         onSelectNeighborhood(neighborhood.id);
                       }
                     }}

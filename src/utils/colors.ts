@@ -7,6 +7,7 @@ export const STATUS_COLORS: Record<VisitStatus, string> = {
 };
 
 export const UNSET_COLOR = '#3a3a44';
+export const NON_RESIDENTIAL_COLOR = '#232228';
 export const HOVER_STROKE = '#ffffff';
 
 export const STATUS_LABELS: Record<VisitStatus, string> = {
