@@ -11,6 +11,7 @@ import ntaTopology from '../../data/nyc-nta-topo.json';
 import { neighborhoods, NTA_ID_PROPERTY } from '../../data/neighborhoods';
 import { useNeighborhoodStore } from '../../store/useNeighborhoodStore';
 import { STATUS_COLORS, UNSET_COLOR, HOVER_STROKE } from '../../utils/colors';
+import { isNonResidentialNta } from '../../utils/nta';
 import { MapTooltip } from './MapTooltip';
 import './NycMap.css';
 
@@ -83,7 +84,9 @@ export function NycMap({ onSelectNeighborhood }: NycMapProps) {
                     }}
                     onMouseLeave={() => setHovered(null)}
                     onClick={() => {
-                      if (neighborhood) onSelectNeighborhood(neighborhood.id);
+                      if (neighborhood && !isNonResidentialNta(neighborhood.id)) {
+                        onSelectNeighborhood(neighborhood.id);
+                      }
                     }}
                   />
                 );

@@ -23,16 +23,6 @@ export function StatusPopup({ neighborhood, onClose }: StatusPopupProps) {
     setStatus(neighborhood.id, status === next ? null : next);
   }
 
-  // Non-residential NTAs (parks, cemeteries, airports, etc.) have no population, so they're
-  // excluded from the neighborhood count — just show the name, no visit-status controls.
-  if (neighborhood.population === 0) {
-    return (
-      <Popup title={neighborhood.name} onClose={onClose}>
-        {null}
-      </Popup>
-    );
-  }
-
   return (
     <>
       <Popup

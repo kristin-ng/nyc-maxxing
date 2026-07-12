@@ -89,7 +89,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "The Evergreens Cemetery",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK0501": {
     id: "BK0501",
@@ -126,7 +125,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Highland Park-Cypress Hills Cemeteries (South)",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK0601": {
     id: "BK0601",
@@ -163,7 +161,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Green-Wood Cemetery",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK0801": {
     id: "BK0801",
@@ -182,7 +179,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Lincoln Terrace Park",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK0901": {
     id: "BK0901",
@@ -219,7 +215,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Dyker Beach Park",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK1101": {
     id: "BK1101",
@@ -286,7 +281,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Calvert Vaux Park",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK1401": {
     id: "BK1401",
@@ -365,7 +359,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Holy Cross Cemetery",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK1801": {
     id: "BK1801",
@@ -390,49 +383,42 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Marine Park-Plumb Island",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK1892": {
     id: "BK1892",
     name: "McGuire Fields",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK1893": {
     id: "BK1893",
     name: "Canarsie Park & Pier",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK5591": {
     id: "BK5591",
     name: "Prospect Park",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK5691": {
     id: "BK5691",
     name: "Barren Island-Floyd Bennett Field",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK5692": {
     id: "BK5692",
     name: "Jamaica Bay (West)",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BK5693": {
     id: "BK5693",
     name: "Shirley Chisholm State Park",
     borough: "Brooklyn",
     recommendations: [],
-    population: 0,
   },
   "BX0101": {
     id: "BX0101",
@@ -463,7 +449,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "North & South Brother Islands",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX0301": {
     id: "BX0301",
@@ -488,7 +473,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Crotona Park",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX0401": {
     id: "BX0401",
@@ -513,14 +497,12 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Yankee Stadium-Macombs Dam Park",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX0492": {
     id: "BX0492",
     name: "Claremont Park",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX0501": {
     id: "BX0501",
@@ -623,7 +605,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Soundview Park",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX1001": {
     id: "BX1001",
@@ -654,14 +635,12 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Hart Island",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX1091": {
     id: "BX1091",
     name: "Ferry Point Park-St. Raymond Cemetery",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX1101": {
     id: "BX1101",
@@ -716,28 +695,24 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Woodlawn Cemetery",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX2691": {
     id: "BX2691",
     name: "Van Cortlandt Park",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX2791": {
     id: "BX2791",
     name: "Bronx Park",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "BX2891": {
     id: "BX2891",
     name: "Pelham Bay Park",
     borough: "Bronx",
     recommendations: [],
-    population: 0,
   },
   "MN0101": {
     id: "MN0101",
@@ -756,7 +731,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "The Battery-Governors Island-Ellis Island-Liberty Island",
     borough: "Manhattan",
     recommendations: [],
-    population: 0,
   },
   "MN0201": {
     id: "MN0201",
@@ -931,7 +905,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Randall's Island",
     borough: "Manhattan",
     recommendations: [],
-    population: 0,
   },
   "MN1201": {
     id: "MN1201",
@@ -956,21 +929,18 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Highbridge Park",
     borough: "Manhattan",
     recommendations: [],
-    population: 0,
   },
   "MN1292": {
     id: "MN1292",
     name: "Inwood Hill Park",
     borough: "Manhattan",
     recommendations: [],
-    population: 0,
   },
   "MN6491": {
     id: "MN6491",
     name: "Central Park",
     borough: "Manhattan",
     recommendations: [],
-    population: 0,
   },
   "QN0101": {
     id: "QN0101",
@@ -1019,14 +989,12 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "St. Michael's Cemetery",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0191": {
     id: "QN0191",
     name: "Astoria Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0201": {
     id: "QN0201",
@@ -1057,7 +1025,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Calvary & Mount Zion Cemeteries",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0301": {
     id: "QN0301",
@@ -1118,28 +1085,24 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Mount Olivet & All Faiths Cemeteries",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0572": {
     id: "QN0572",
     name: "Middle Village Cemetery",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0573": {
     id: "QN0573",
     name: "St. John Cemetery",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0574": {
     id: "QN0574",
     name: "Highland Park-Cypress Hills Cemeteries (North)",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0601": {
     id: "QN0601",
@@ -1206,7 +1169,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Kissena Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0801": {
     id: "QN0801",
@@ -1243,14 +1205,12 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Mount Hebron & Cedar Grove Cemeteries",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0891": {
     id: "QN0891",
     name: "Cunningham Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN0901": {
     id: "QN0901",
@@ -1305,7 +1265,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Spring Creek Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN1101": {
     id: "QN1101",
@@ -1336,7 +1295,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Alley Pond Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN1201": {
     id: "QN1201",
@@ -1421,7 +1379,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Montefiore Cemetery",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN1401": {
     id: "QN1401",
@@ -1446,49 +1403,42 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Rockaway Community Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN8081": {
     id: "QN8081",
     name: "LaGuardia Airport",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN8191": {
     id: "QN8191",
     name: "Flushing Meadows-Corona Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN8291": {
     id: "QN8291",
     name: "Forest Park",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN8381": {
     id: "QN8381",
     name: "John F. Kennedy International Airport",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN8491": {
     id: "QN8491",
     name: "Jamaica Bay (East)",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "QN8492": {
     id: "QN8492",
     name: "Jacob Riis Park-Fort Tilden-Breezy Point Tip",
     borough: "Queens",
     recommendations: [],
-    population: 0,
   },
   "SI0101": {
     id: "SI0101",
@@ -1537,7 +1487,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Snug Harbor",
     borough: "Staten Island",
     recommendations: [],
-    population: 0,
   },
   "SI0201": {
     id: "SI0201",
@@ -1568,7 +1517,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Freshkills Park (North)",
     borough: "Staten Island",
     recommendations: [],
-    population: 0,
   },
   "SI0301": {
     id: "SI0301",
@@ -1605,7 +1553,6 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Freshkills Park (South)",
     borough: "Staten Island",
     recommendations: [],
-    population: 0,
   },
   "SI9561": {
     id: "SI9561",
@@ -1618,20 +1565,17 @@ export const neighborhoods: Record<string, NeighborhoodStaticData> = {
     name: "Hoffman & Swinburne Islands",
     borough: "Staten Island",
     recommendations: [],
-    population: 0,
   },
   "SI9592": {
     id: "SI9592",
     name: "Miller Field",
     borough: "Staten Island",
     recommendations: [],
-    population: 0,
   },
   "SI9593": {
     id: "SI9593",
     name: "Great Kills Park",
     borough: "Staten Island",
     recommendations: [],
-    population: 0,
   },
 };

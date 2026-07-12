@@ -4,6 +4,7 @@ import type {
   NeighborhoodStatusMap,
   StatusCounts,
 } from '../types/neighborhood';
+import { isNonResidentialNta } from './nta';
 
 export const ALL_BOROUGHS: BoroughName[] = [
   'Manhattan',
@@ -26,7 +27,9 @@ export function computeBoroughStats(
   statuses: NeighborhoodStatusMap,
   neighborhoods: Record<string, NeighborhoodStaticData>
 ): BoroughStats {
-  const populatedNeighborhoods = Object.values(neighborhoods).filter((n) => n.population !== 0);
+  const populatedNeighborhoods = Object.values(neighborhoods).filter(
+    (n) => !isNonResidentialNta(n.id)
+  );
 
   const neighborhoodCountByBorough = Object.fromEntries(
     ALL_BOROUGHS.map((borough) => [borough, 0])
@@ -42,7 +45,7 @@ export function computeBoroughStats(
 
   for (const [id, status] of Object.entries(statuses)) {
     const neighborhood = neighborhoods[id];
-    if (!neighborhood || neighborhood.population === 0) continue;
+    if (!neighborhood || isNonResidentialNta(id)) continue;
 
     overall.total += 1;
     const boroughCounts = byBorough[neighborhood.borough];
