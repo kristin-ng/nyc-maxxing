@@ -22,6 +22,10 @@ export interface NeighborhoodStaticData {
   borough: BoroughName;
   culturalFlag?: CulturalFlag;
   recommendations: Recommendation[];
+  // Set to 0 for non-residential NTAs (parks, cemeteries, airports, etc.) that have no
+  // population in Census/DCP data. Undefined for ordinary (populated) neighborhoods —
+  // we don't track exact population figures for those.
+  population?: number;
 }
 
 // User-generated, persisted, keyed by neighborhood id.

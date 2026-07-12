@@ -77,6 +77,32 @@ describe('computeBoroughStats', () => {
   });
 });
 
+describe('computeBoroughStats with non-residential (population 0) neighborhoods', () => {
+  const neighborhoodsWithPark: Record<string, NeighborhoodStaticData> = {
+    ...neighborhoods,
+    BK9591: {
+      id: 'BK9591',
+      name: 'Prospect Park',
+      borough: 'Brooklyn',
+      recommendations: [],
+      population: 0,
+    },
+  };
+
+  it('excludes population-0 neighborhoods from the neighborhood count', () => {
+    const { overall, byBorough } = computeBoroughStats({}, neighborhoodsWithPark);
+    expect(overall.neighborhoodCount).toBe(3);
+    expect(byBorough.Brooklyn.neighborhoodCount).toBe(2);
+  });
+
+  it('ignores a status set on a population-0 neighborhood', () => {
+    const { overall, byBorough } = computeBoroughStats({ BK9591: 'lived' }, neighborhoodsWithPark);
+    expect(overall.lived).toBe(0);
+    expect(overall.total).toBe(0);
+    expect(byBorough.Brooklyn.lived).toBe(0);
+  });
+});
+
 describe('percentageVisited', () => {
   it('returns 0 when there are no neighborhoods in scope', () => {
     expect(percentageVisited({ lived: 0, visited: 0, wantToGo: 0, total: 0, visitedCount: 0, neighborhoodCount: 0 })).toBe(0);

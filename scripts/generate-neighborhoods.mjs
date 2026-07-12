@@ -24,6 +24,14 @@ const BORO_NAME_MAP = {
   'Staten Island': 'Staten Island',
 };
 
+// NYC DCP's NTA2020 coding convention: the last two digits of the id flag non-residential
+// geographies with no population — 71-79 cemeteries, 81-89 other (airports, islands, etc.),
+// 91-99 parks. Everything else (01-69) is an ordinary residential NTA.
+function isNonResidential(id) {
+  const suffix = Number(id.slice(-2));
+  return suffix >= 71 && suffix <= 99;
+}
+
 const entries = geometries.map((geo) => {
   const props = geo.properties ?? {};
   const id = props.NTA2020;
@@ -32,18 +40,18 @@ const entries = geometries.map((geo) => {
   if (!id || !name || !borough) {
     throw new Error(`Missing expected properties on geography: ${JSON.stringify(props)}`);
   }
-  return { id, name, borough };
+  return { id, name, borough, population: isNonResidential(id) ? 0 : undefined };
 });
 
 entries.sort((a, b) => a.id.localeCompare(b.id));
 
 const body = entries
   .map(
-    ({ id, name, borough }) => `  ${JSON.stringify(id)}: {
+    ({ id, name, borough, population }) => `  ${JSON.stringify(id)}: {
     id: ${JSON.stringify(id)},
     name: ${JSON.stringify(name)},
     borough: ${JSON.stringify(borough)},
-    recommendations: [],
+    recommendations: [],${population === 0 ? '\n    population: 0,' : ''}
   },`
   )
   .join('\n');
