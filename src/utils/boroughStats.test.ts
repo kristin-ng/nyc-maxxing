@@ -3,9 +3,19 @@ import { computeBoroughStats, percentageVisited } from './boroughStats';
 import type { NeighborhoodStaticData } from '../types/neighborhood';
 
 const neighborhoods: Record<string, NeighborhoodStaticData> = {
-  BK0102: { id: 'BK0102', name: 'Williamsburg', borough: 'Brooklyn', recommendations: [] },
-  BK0104: { id: 'BK0104', name: 'East Williamsburg', borough: 'Brooklyn', recommendations: [] },
-  MN40: { id: 'MN40', name: 'Upper East Side', borough: 'Manhattan', recommendations: [] },
+  Williamsburg: { id: 'Williamsburg', name: 'Williamsburg', borough: 'Brooklyn', recommendations: [] },
+  East_Williamsburg: {
+    id: 'East_Williamsburg',
+    name: 'East Williamsburg',
+    borough: 'Brooklyn',
+    recommendations: [],
+  },
+  Upper_East_Side: {
+    id: 'Upper_East_Side',
+    name: 'Upper East Side',
+    borough: 'Manhattan',
+    recommendations: [],
+  },
 };
 
 describe('computeBoroughStats', () => {
@@ -24,7 +34,7 @@ describe('computeBoroughStats', () => {
 
   it('tallies overall and per-borough counts by status', () => {
     const { overall, byBorough } = computeBoroughStats(
-      { BK0102: 'lived', BK0104: 'visited', MN40: 'want-to-go' },
+      { Williamsburg: 'lived', East_Williamsburg: 'visited', Upper_East_Side: 'want-to-go' },
       neighborhoods
     );
     expect(overall).toEqual({ lived: 1, visited: 1, wantToGo: 1, total: 3, visitedCount: 2, neighborhoodCount: 3 });
@@ -62,7 +72,7 @@ describe('computeBoroughStats', () => {
 
   it('total equals the sum of the three status counts', () => {
     const { overall } = computeBoroughStats(
-      { BK0102: 'lived', BK0104: 'visited', MN40: 'want-to-go' },
+      { Williamsburg: 'lived', East_Williamsburg: 'visited', Upper_East_Side: 'want-to-go' },
       neighborhoods
     );
     expect(overall.total).toBe(overall.lived + overall.visited + overall.wantToGo);
@@ -70,27 +80,30 @@ describe('computeBoroughStats', () => {
 
   it('visitedCount excludes want-to-go', () => {
     const { overall } = computeBoroughStats(
-      { BK0102: 'lived', BK0104: 'visited', MN40: 'want-to-go' },
+      { Williamsburg: 'lived', East_Williamsburg: 'visited', Upper_East_Side: 'want-to-go' },
       neighborhoods
     );
     expect(overall.visitedCount).toBe(overall.lived + overall.visited);
   });
 });
 
-describe('computeBoroughStats with non-residential NTAs (park/cemetery/airport ids)', () => {
+describe('computeBoroughStats with non-residential areas (park/cemetery/airport ids)', () => {
   const neighborhoodsWithPark: Record<string, NeighborhoodStaticData> = {
     ...neighborhoods,
-    BK9591: { id: 'BK9591', name: 'Prospect Park', borough: 'Brooklyn', recommendations: [] },
+    Prospect_Park: { id: 'Prospect_Park', name: 'Prospect Park', borough: 'Brooklyn', recommendations: [] },
   };
 
-  it('excludes non-residential NTAs from the neighborhood count', () => {
+  it('excludes non-residential areas from the neighborhood count', () => {
     const { overall, byBorough } = computeBoroughStats({}, neighborhoodsWithPark);
     expect(overall.neighborhoodCount).toBe(3);
     expect(byBorough.Brooklyn.neighborhoodCount).toBe(2);
   });
 
-  it('ignores a status set on a non-residential NTA', () => {
-    const { overall, byBorough } = computeBoroughStats({ BK9591: 'lived' }, neighborhoodsWithPark);
+  it('ignores a status set on a non-residential area', () => {
+    const { overall, byBorough } = computeBoroughStats(
+      { Prospect_Park: 'lived' },
+      neighborhoodsWithPark
+    );
     expect(overall.lived).toBe(0);
     expect(overall.total).toBe(0);
     expect(byBorough.Brooklyn.lived).toBe(0);

@@ -17,7 +17,7 @@ export interface CulturalFlag {
 
 // Static, bundled with the app — not persisted to storage.
 export interface NeighborhoodStaticData {
-  id: string; // NTA2020 code, e.g. "BK73"
+  id: string; // Neighborhood slug derived from the source dataset's PediaCities resource URL, e.g. "Carroll_Gardens"
   name: string; // e.g. "Williamsburg"
   borough: BoroughName;
   culturalFlag?: CulturalFlag;
