@@ -7,18 +7,18 @@ import { feature } from 'topojson-client';
 import type { Topology, GeometryCollection } from 'topojson-specification';
 // (types resolve via the @types/topojson-specification transitive dependency of @types/topojson-client)
 import type { FeatureCollection } from 'geojson';
-import ntaTopology from '../../data/nyc-nta-topo.json';
-import { neighborhoods, NTA_ID_PROPERTY } from '../../data/neighborhoods';
+import neighborhoodTopology from '../../data/nyc-neighborhoods-topo.json';
+import { neighborhoods, NEIGHBORHOOD_ID_PROPERTY } from '../../data/neighborhoods';
 import { useNeighborhoodStore } from '../../store/useNeighborhoodStore';
-import { STATUS_COLORS, UNSET_COLOR, HOVER_STROKE } from '../../utils/colors';
-import { isNonResidentialNta } from '../../utils/nta';
+import { STATUS_COLORS, UNSET_COLOR, NON_RESIDENTIAL_COLOR, HOVER_STROKE } from '../../utils/colors';
+import { isNonResidentialArea } from '../../utils/nonResidentialAreas';
 import { MapTooltip } from './MapTooltip';
 import './NycMap.css';
 
 const WIDTH = 800;
 const HEIGHT = 800;
 
-const topology = ntaTopology as unknown as Topology;
+const topology = neighborhoodTopology as unknown as Topology;
 const objectKey = Object.keys(topology.objects)[0];
 const geoJson = feature(
   topology,
@@ -48,13 +48,17 @@ export function NycMap({ onSelectNeighborhood }: NycMapProps) {
         style={{ width: '100%', height: '100%' }}
       >
         <ZoomableGroup zoom={1} minZoom={1} maxZoom={12}>
-          <Geographies geography={ntaTopology}>
+          <Geographies geography={neighborhoodTopology}>
             {({ geographies }) =>
               geographies.map((geo) => {
-                const id = geo.properties?.[NTA_ID_PROPERTY];
+                const id = geo.properties?.[NEIGHBORHOOD_ID_PROPERTY];
                 const neighborhood = id ? neighborhoods[id] : undefined;
                 const status = id ? statuses[id] : undefined;
-                const fill = status ? STATUS_COLORS[status] : UNSET_COLOR;
+                const fill = id && isNonResidentialArea(id)
+                  ? NON_RESIDENTIAL_COLOR
+                  : status
+                    ? STATUS_COLORS[status]
+                    : UNSET_COLOR;
 
                 return (
                   <Geography
@@ -84,7 +88,7 @@ export function NycMap({ onSelectNeighborhood }: NycMapProps) {
                     }}
                     onMouseLeave={() => setHovered(null)}
                     onClick={() => {
-                      if (neighborhood && !isNonResidentialNta(neighborhood.id)) {
+                      if (neighborhood && !isNonResidentialArea(neighborhood.id)) {
                         onSelectNeighborhood(neighborhood.id);
                       }
                     }}
