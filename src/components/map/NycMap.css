@@ -11,3 +11,39 @@
   display: block;
   touch-action: none;
 }
+
+.nyc-map-zoom-controls {
+  position: absolute;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #3a3a44;
+}
+
+.nyc-map-zoom-controls button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #1c1c22;
+  color: #f2f2f5;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nyc-map-zoom-controls button:not(:last-child) {
+  border-bottom: 1px solid #3a3a44;
+}
+
+.nyc-map-zoom-controls button:disabled {
+  color: #5a5a64;
+  cursor: default;
+}
+
+.nyc-map-zoom-controls button:not(:disabled):hover {
+  background: #26262e;
+}

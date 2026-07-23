@@ -21,6 +21,7 @@ export function StatusPopup({ neighborhood, onClose }: StatusPopupProps) {
 
   function handleStatusClick(next: VisitStatus) {
     setStatus(neighborhood.id, status === next ? null : next);
+    onClose();
   }
 
   return (

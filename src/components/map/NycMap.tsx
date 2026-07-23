@@ -17,6 +17,9 @@ import './NycMap.css';
 
 const WIDTH = 800;
 const HEIGHT = 800;
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 12;
+const ZOOM_STEP = 1.5;
 
 const topology = neighborhoodTopology as unknown as Topology;
 const objectKey = Object.keys(topology.objects)[0];
@@ -36,18 +39,45 @@ interface NycMapProps {
 export function NycMap({ onSelectNeighborhood }: NycMapProps) {
   const statuses = useNeighborhoodStore((s) => s.statuses);
   const [hovered, setHovered] = useState<{ name: string; x: number; y: number } | null>(null);
+  const [zoom, setZoom] = useState(1);
+
+  const handleZoomIn = () => setZoom((z) => Math.min(z * ZOOM_STEP, MAX_ZOOM));
+  const handleZoomOut = () => setZoom((z) => Math.max(z / ZOOM_STEP, MIN_ZOOM));
 
   // @types/react-simple-maps mis-types `projection` as a (w, h, config) => GeoProjection
   // factory; at runtime a function prop is used directly as the projection instance.
   return (
     <div className="nyc-map">
+      <div className="nyc-map-zoom-controls">
+        <button
+          type="button"
+          aria-label="Zoom in"
+          onClick={handleZoomIn}
+          disabled={zoom >= MAX_ZOOM}
+        >
+          +
+        </button>
+        <button
+          type="button"
+          aria-label="Zoom out"
+          onClick={handleZoomOut}
+          disabled={zoom <= MIN_ZOOM}
+        >
+          −
+        </button>
+      </div>
       <ComposableMap
         width={WIDTH}
         height={HEIGHT}
         projection={projection as unknown as ProjectionFunction}
         style={{ width: '100%', height: '100%' }}
       >
-        <ZoomableGroup zoom={1} minZoom={1} maxZoom={12}>
+        <ZoomableGroup
+          zoom={zoom}
+          minZoom={MIN_ZOOM}
+          maxZoom={MAX_ZOOM}
+          onMoveEnd={({ zoom: nextZoom }) => setZoom(nextZoom)}
+        >
           <Geographies geography={neighborhoodTopology}>
             {({ geographies }) =>
               geographies.map((geo) => {
