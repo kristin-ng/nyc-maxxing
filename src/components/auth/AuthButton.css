@@ -1,0 +1,40 @@
+.auth-button {
+  border: 1px solid #3a3a44;
+  background: #1c1c22;
+  color: #f2f2f5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  background: #2a2a32;
+}
+
+.auth-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.auth-user-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.auth-user-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #f2f2f5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auth-button--signout {
+  padding: 6px 10px;
+  font-size: 0.75rem;
+}

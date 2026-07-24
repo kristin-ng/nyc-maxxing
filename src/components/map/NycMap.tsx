@@ -32,6 +32,13 @@ const geoJson = feature(
 // instance (it does not call it as a factory), so `fitSize` must be applied here.
 const projection: GeoProjection = geoMercator().fitSize([WIDTH, HEIGHT], geoJson);
 
+// ZoomableGroup recenters on its `center` prop (in geo coordinates) whenever `zoom`
+// changes. Without an explicit center it defaults to [0, 0] (null island), which this
+// projection maps far outside the canvas — so zoom-button clicks were panning the map
+// out of view entirely. Anchoring on the point that projects to the canvas center keeps
+// zoom-in/out centered on NYC instead.
+const CENTER = projection.invert!([WIDTH / 2, HEIGHT / 2]) as [number, number];
+
 interface NycMapProps {
   onSelectNeighborhood: (id: string) => void;
 }
@@ -73,6 +80,7 @@ export function NycMap({ onSelectNeighborhood }: NycMapProps) {
         style={{ width: '100%', height: '100%' }}
       >
         <ZoomableGroup
+          center={CENTER}
           zoom={zoom}
           minZoom={MIN_ZOOM}
           maxZoom={MAX_ZOOM}

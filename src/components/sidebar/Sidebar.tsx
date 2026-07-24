@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNeighborhoodStore } from '../../store/useNeighborhoodStore';
 import { ALL_BOROUGHS, computeBoroughStats, percentageVisited } from '../../utils/boroughStats';
 import { neighborhoods } from '../../data/neighborhoods';
+import { AuthButton } from '../auth/AuthButton';
 import { BoroughBreakdown } from './BoroughBreakdown';
 import './Sidebar.css';
 
@@ -23,6 +24,7 @@ export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
       {isOpen && <div className="sidebar-backdrop" onClick={onClose} />}
       <aside className={`sidebar ${isOpen ? 'sidebar--open' : ''}`}>
         <h1 className="sidebar-title">NYC Maxxing</h1>
+        <AuthButton />
 
         <div className="overall-stat">
           <span className="overall-stat-value">{overall.visitedCount}</span>

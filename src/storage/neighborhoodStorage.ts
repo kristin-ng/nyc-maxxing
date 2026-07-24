@@ -4,6 +4,7 @@ export interface NeighborhoodStore {
   getStatus(id: string): VisitStatus | null;
   setStatus(id: string, status: VisitStatus | null): void;
   getAllStatuses(): NeighborhoodStatusMap;
+  replaceAll(statuses: NeighborhoodStatusMap): void;
 }
 
 const STORAGE_KEY = 'nyc-maxxing:v1';
@@ -55,5 +56,8 @@ export const localStorageNeighborhoodStore: NeighborhoodStore = {
   },
   getAllStatuses() {
     return readAll().statuses;
+  },
+  replaceAll(statuses) {
+    writeAll({ version: STORAGE_VERSION, statuses });
   },
 };
